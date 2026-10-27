@@ -1,0 +1,139 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <!-- 项目设置 -->
+  <PropertyGroup>
+    <PlatformTarget>x64</PlatformTarget>
+    <TargetFramework>net472</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>JusXAnyLabel.VPlugin</RootNamespace>
+    <AssemblyName>JusXAnyLabel.VPlugin</AssemblyName>
+    <ApplicationIcon>assets/star_round.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <!-- 语言设置 -->
+  <PropertyGroup>
+    <LangVersion>12.0</LangVersion>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- 接口 -->
+    <Reference Include="ViDi.NET.Interfaces">
+      <HintPath>./libs/ViDi.NET.Interfaces.dll</HintPath>
+    </Reference>
+
+    <Reference Include="ViDi.NET.Training.UI.Interfaces">
+      <HintPath>./libs/ViDi.NET.Training.UI.Interfaces.dll</HintPath>
+    </Reference>
+
+    <Reference Include="ViDi.NET.UI.Interfaces">
+      <HintPath>./libs/ViDi.NET.UI.Interfaces.dll</HintPath>
+    </Reference>
+
+    <!-- 组件 -->
+    <Reference Include="ViDi.NET">
+      <HintPath>./libs/ViDi.NET.dll</HintPath>
+    </Reference>
+
+    <Reference Include="ViDi.NET.UI">
+      <HintPath>./libs/ViDi.NET.UI.dll</HintPath>
+    </Reference>
+
+    <Reference Include="ViDi.NET.Local.UI">
+      <HintPath>./libs/ViDi.NET.Local.dll</HintPath>
+    </Reference>
+
+    <Reference Include="ViDi.NET.Common.UI">
+      <HintPath>./libs/ViDi.NET.Common.dll</HintPath>
+    </Reference>
+
+    <Reference Include="ViDi.NET.Data.UI">
+      <HintPath>./libs/ViDi.NET.Data.dll</HintPath>
+    </Reference>
+
+    <Reference Include="ViDi.NET.Training.UI">
+      <HintPath>./libs/ViDi.NET.Training.UI.dll</HintPath>
+    </Reference>
+
+    <!-- 微软库 -->
+    <Reference Include="Microsoft.CSharp">
+      <HintPath>./libs/Microsoft.CSharp.dll</HintPath>
+    </Reference>
+
+    <!-- 第三方库 -->
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>./libs/Newtonsoft.Json.dll</HintPath>
+    </Reference>
+
+    <Reference Include="Magick.NET-Q16-AnyCPU, Version=7.14.5.0, Culture=neutral">
+      <HintPath>./libs/Magick.NET-Q16-AnyCPU.dll</HintPath>
+    </Reference>
+
+  </ItemGroup>
+
+  <!-- 数据库 -->
+  <ItemGroup>
+      <!-- SQLite 官方 ADO.NET Provider -->
+      <Reference Include="Microsoft.Data.Sqlite">
+        <HintPath>libs\sqlite3\Microsoft.Data.Sqlite.dll</HintPath>
+      </Reference>
+
+      <!-- SQLitePCLRaw 核心运行时 -->
+      <Reference Include="SQLitePCLRaw.core">
+        <HintPath>libs\sqlite3\SQLitePCLRaw.core.dll</HintPath>
+      </Reference>
+
+      <!-- 动态 cdecl 调用提供程序 -->
+      <Reference Include="SQLitePCLRaw.provider.dynamic_cdecl">
+        <HintPath>libs\sqlite3\SQLitePCLRaw.provider.dynamic_cdecl.dll</HintPath>
+      </Reference>
+
+      <!-- batteries_v2：初始化 SQLitePCLRaw 的“电池” -->
+      <Reference Include="SQLitePCLRaw.batteries_v2">
+        <HintPath>libs\sqlite3\SQLitePCLRaw.batteries_v2.dll</HintPath>
+      </Reference>
+
+      <!-- 原生 SQLite 引擎（必须随包部署） -->
+      <Reference Include="e_sqlite3">
+        <HintPath>libs\sqlite3\e_sqlite3.dll</HintPath>
+        <Private>true</Private>
+      </Reference>
+
+      <!--  原生 SQLite 引擎  -->
+      <None Include="libs\sqlite3\e_sqlite3.dll">
+        <Link>e_sqlite3.dll</Link>
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+
+      <!-- 依赖的 System.* 程序集 -->
+      <Reference Include="System.Buffers">
+        <HintPath>libs\sqlite3\System.Buffers.dll</HintPath>
+      </Reference>
+
+      <Reference Include="System.Memory">
+        <HintPath>libs\sqlite3\System.Memory.dll</HintPath>
+      </Reference>
+
+      <Reference Include="System.Numerics.Vectors">
+        <HintPath>libs\sqlite3\System.Numerics.Vectors.dll</HintPath>
+      </Reference>
+
+      <Reference Include="System.Runtime.CompilerServices.Unsafe">
+        <HintPath>libs\sqlite3\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+    <!-- 递归包含目录下的所有文件 -->
+    <ItemGroup>
+        <!-- dll文件 -->
+        <Content Include="libs\**\*">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+
+        <!-- 资源文件 -->
+        <Content Include="assets\**\*">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
+
+</Project>
